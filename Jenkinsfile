@@ -21,14 +21,15 @@ stage("Package") {
 
 stage("Docker build") {
      steps {
-	      sh "docker login -u nikhilnidhi -p chinki12"
-
+	     
           sh "docker build -t nikhilnidhi/calculator ."
      }
 }
 
 stage("Docker push") {
      steps {
+	  sh "docker login -u nikhilnidhi -p chinki12"
+
           sh "docker push nikhilnidhi/calculator"
      }
 }
