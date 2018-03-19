@@ -22,7 +22,7 @@ stage("Package") {
 stage("Docker build") {
      steps {
 	     
-          sh "docker build -t nikhilnidhi/calculator ."
+          sh "docker build -t nikhilnidhi/calculator_1 ."
      }
 }
 
@@ -30,12 +30,13 @@ stage("Docker push") {
      steps {
 	  sh "docker login -u nikhilnidhi -p chinki12"
 
-          sh "docker push nikhilnidhi/calculator"
+          sh "docker push nikhilnidhi/calculator_1"
      }
 }
 stage("Deploy to staging") {
      steps {
-          sh "docker run -d --rm -p 8765:8080 --name calculator nikhilnidhi/calculator"
+	 sh "docker stop calculator"
+          sh "docker run -d --rm -p 8765:8080 --name calculator nikhilnidhi/calculator_1"
      }
 }
 
@@ -43,7 +44,7 @@ stage("Deploy to staging") {
      }
 	 post {
      always {
-          sh "docker stop calculator"
+          sh "docker stop calculator_1"
      }
 }
 }
