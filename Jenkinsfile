@@ -37,6 +37,11 @@ stage("Deploy to staging") {
           sh "docker run -d --rm -p 8765:8080 --name calculator nikhilnidhi/calculator"
      }
 }
+post {
+     always {
+          sh "docker stop calculator"
+     }
+}
 
      }
 }
