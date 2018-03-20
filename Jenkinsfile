@@ -35,8 +35,8 @@ stage("Docker push") {
 }
 stage("Deploy to staging") {
      steps {
-	 sh "docker stop calculator"
-          sh "docker run -d --rm -p 8765:8080 --name calculator nikhilnidhi/calculator_1"
+	
+          sh "docker run -d --rm -p 8765:8080 --name calculator_1 nikhilnidhi/calculator_1"
      }
 }
 
