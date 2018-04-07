@@ -11,7 +11,7 @@ pipeline {
   //   steps {
          // sh "./gradlew jacocoTestReport"
          // sh "./gradlew jacocoTestCoverageVerification"
-     //}
+     //}z
 //}
 		  
 stage("Package") {
