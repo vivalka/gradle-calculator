@@ -1,0 +1,23 @@
+pipeline
+{
+   agent any
+   stages
+   {
+     stage("scm checkout")
+	 {
+	 steps
+		{
+			git 'https://github.com/vivalka/gradle-calculator'
+		}
+	 }
+   stage("compile source code")
+   {
+   steps
+   {
+      withAnt(installation: 'LocalAnt', jdk: 'jdkLocal-8') {
+       sh './gradlew compileJava'
+    }
+   }
+   }
+  }
+ } 
